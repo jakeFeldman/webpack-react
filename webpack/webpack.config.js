@@ -1,14 +1,13 @@
 // FS
 const path = require('path');
-// PACKAGES
+// PLUGINS
 const autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {
     HotModuleReplacementPlugin,
     NamedModulesPlugin,
 } = require('webpack');
-// PLUGINS
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const isDevelopment = ENVIRONMENT === 'development';
@@ -20,7 +19,7 @@ module.exports = {
         path.resolve('src', 'index')
     ],
     output: {
-        filename: '[name].js',
+        filename: isDevelopment ? '[name].js' : '[name].[hash].js',
         path: path.resolve('dist'),
         publicPath: '/',
     },
@@ -74,7 +73,7 @@ module.exports = {
             template: path.resolve('public', 'index.html'),
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css'
+            filename: isDevelopment ? '[name].css' : '/static/css/[name].[hash].css',
         })
     ],
     devServer: {
