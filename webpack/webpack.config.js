@@ -15,7 +15,7 @@ const isDevelopment = ENVIRONMENT === 'development';
 module.exports = {
     mode: ENVIRONMENT,
     entry: [
-        // path.resolve(__dirname, 'polyfills'),
+        path.resolve(__dirname, 'polyfills'),
         path.resolve('src', 'index')
     ],
     output: {
@@ -79,5 +79,20 @@ module.exports = {
     devServer: {
         port: 3000,
         contentBase: path.resolve('dist'),
+        hot: true,
+        historyApiFallback: true,
+        overlay: {
+            errors: true,
+        },
+        stats: {
+            colors: true,
+            errors: true,
+            errorDetails: true,
+            warnings: true,
+            modules: false,
+            hash: false,
+            chunks: false,
+            assets: false,
+        }
     },
 };

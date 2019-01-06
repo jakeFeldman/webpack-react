@@ -4,5 +4,9 @@ import React from 'react';
 import './App.scss';
 
 export default function App () {
-    return <div>Application</div>;
+    return (
+        <div>
+            Application
+        </div>
+    );
 }
