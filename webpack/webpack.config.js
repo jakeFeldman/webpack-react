@@ -84,6 +84,7 @@ module.exports = {
         overlay: {
             errors: true,
         },
+        open: true,
         stats: {
             colors: true,
             errors: true,
