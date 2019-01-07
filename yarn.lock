@@ -668,6 +668,14 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@mezmerik/http@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@mezmerik/http/-/http-0.0.4.tgz#858873306576edff02257d5d88cb4becac7c0800"
+  integrity sha512-eyUVpHYhAPOoJMfCIqQhDlQJk6qlUuxPJP/0dXPo6qnAAWQHleFq/Llm/pTzb0a4d/0wVz+CSRs5eeRaL7uBmA==
+  dependencies:
+    "@babel/polyfill" "^7.2.5"
+    whatwg-fetch "^3.0.0"
+
 "@types/node@*":
   version "10.12.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
