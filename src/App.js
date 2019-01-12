@@ -7,7 +7,7 @@ export default function App () {
     return (
         <div>
             Application
-            <button onClick={getThing}>CLICK ME</button>
+            <button>CLICK ME</button>
         </div>
     );
 }
