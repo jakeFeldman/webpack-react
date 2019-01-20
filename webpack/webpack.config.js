@@ -23,6 +23,11 @@ module.exports = {
         path: path.resolve('dist'),
         publicPath: '/',
     },
+    resolve: {
+        alias: {
+            components: path.resolve('src', 'components')
+        },
+    },
     module: {
         rules: [
             {
