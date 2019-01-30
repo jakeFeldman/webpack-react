@@ -6,6 +6,7 @@ import Button from 'components/Button/Button';
 import './App.scss';
 
 export default function App () {
+    console.log('created by: Jake Feldman');
     return (
         <div>
             <Button>CLICK ME</Button>
