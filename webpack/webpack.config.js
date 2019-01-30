@@ -1,7 +1,8 @@
 // FS
 const path = require('path');
-// PLUGINS
+// PACKAGES
 const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {
@@ -10,7 +11,18 @@ const {
 } = require('webpack');
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const isDevelopment = ENVIRONMENT === 'development';
+const IS_DEV = ENVIRONMENT === 'development';
+
+const styleLoader = IS_DEV
+    ? { loader: 'style-loader' }
+    : {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+            publicPath: '/'
+        }
+    };
+
+const plugins = !IS_DEV ? [ new CleanWebpackPlugin(['../dist/'], { allowExternal: true })] : [];
 
 module.exports = {
     mode: ENVIRONMENT,
@@ -19,7 +31,7 @@ module.exports = {
         path.resolve('src', 'index')
     ],
     output: {
-        filename: isDevelopment ? '[name].js' : '[name].[hash].js',
+        filename: IS_DEV ? '[name].js' : '[name].[hash].js',
         path: path.resolve('dist'),
         publicPath: '/',
     },
@@ -56,7 +68,7 @@ module.exports = {
             {
                 test: /\.(scss|sass)$/,
                 use: [
-                    { loader: isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader },
+                    styleLoader,
                     { loader: 'css-loader' },
                     {
                         loader: 'postcss-loader',
@@ -70,6 +82,7 @@ module.exports = {
         ],
     },
     plugins: [
+        ...plugins,
         new HotModuleReplacementPlugin(),
         new NamedModulesPlugin(),
         new HtmlWebpackPlugin({
@@ -78,7 +91,8 @@ module.exports = {
             template: path.resolve('public', 'index.html'),
         }),
         new MiniCssExtractPlugin({
-            filename: isDevelopment ? '[name].css' : '/static/css/[name].[hash].css',
+            filename: IS_DEV ? '[name].css' : '[name].[hash].css',
+            chunkFilename: '[id].css'
         })
     ],
     devServer: {
