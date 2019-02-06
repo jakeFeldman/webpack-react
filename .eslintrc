@@ -1,5 +1,6 @@
 {
     "extends": [
+        "react-hooks",
         "plugin:jsx-a11y/recommended"
     ],
     "plugins": ["react", "jsx-a11y"],
@@ -23,6 +24,7 @@
         "it": true
     },
     "rules": {
+        "react-hooks/rules-of-hooks": "error",
         "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 2,
         "brace-style": [
