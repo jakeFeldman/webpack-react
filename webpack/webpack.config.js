@@ -42,19 +42,19 @@ module.exports = {
     },
     module: {
         rules: [
-            // {
-            //     test: /\.(js|jsx)$/,
-            //     enforce: 'pre',
-            //     exclude: /node_modules/,
-            //     use: [
-            //         {
-            //             loader: 'eslint-loader',
-            //             options: {
-            //                 eslintPath: require.resolve('eslint'),
-            //             }
-            //         }
-            //     ]
-            // },
+            {
+                test: /\.(js|jsx)$/,
+                enforce: 'pre',
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            eslintPath: require.resolve('eslint'),
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,

@@ -1,9 +1,6 @@
 {
-    "extends": [
-        "react-hooks",
-        "plugin:jsx-a11y/recommended"
-    ],
-    "plugins": ["react", "jsx-a11y"],
+    "extends": ["plugin:jsx-a11y/recommended"],
+    "plugins": ["react", "react-hooks", "jsx-a11y"],
     "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module",
